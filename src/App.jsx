@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
+import scrimba from './assets/scrimba.png'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
@@ -52,6 +53,12 @@ function App() {
             <li>
               <a href="https://react.dev/" target="_blank">
                 <img className="button-icon" src={reactLogo} alt="" />
+                Learn more
+              </a>
+            </li>
+            <li>
+              <a href="https://scrimba.com/" target="_blank">
+                <img className="button-icon" src={scrimba} alt="" />
                 Learn more
               </a>
             </li>
