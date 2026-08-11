@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
+import ReactLogo from './assets/react.svg?react'
 import scrimba from './assets/scrimba.png'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
@@ -39,7 +39,8 @@ function App() {
       <section id="center">
         <div className="hero">
           <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
+          {/* <img src={reactLogo} className="framework" alt="React logo" /> */}
+          <ReactLogo className="framework" />
           <img src={viteLogo} className="vite" alt="Vite logo" />
         </div>
         
@@ -78,7 +79,8 @@ function App() {
             </li>
             <li>
               <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
+                {/* <img className="button-icon" src={reactLogo} alt="" /> */}
+                <ReactLogo className="button-icon" />
                 Learn more
               </a>
             </li>
