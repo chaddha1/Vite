@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import scrimba from './assets/scrimba.png'
 import viteLogo from './assets/vite.svg'
@@ -8,7 +8,30 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 
 function App() {
+  const greeting = import.meta.env.VITE_GREETING
   const [count, setCount] = useState(0)
+  const [ipAddress, setIpAddress] = useState('')
+
+  useEffect(() => {
+    const fetchIpAddress = async () => {
+      const apiURL= import.meta.env.VITE_API_URL;
+      try {
+        const response = await fetch(`${apiURL}?format=json`);
+
+        if(!response.ok) {
+          throw new Error(`API error: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setIpAddress(data.ip);
+      } catch (error) {
+        setIpAddress('IP address Not Available');
+        console.error('Error fetching IP address:', error.message);
+      };
+    }
+
+    fetchIpAddress();
+  }, [])
 
   return (
     <>
@@ -19,8 +42,11 @@ function App() {
           <img src={reactLogo} className="framework" alt="React logo" />
           <img src={viteLogo} className="vite" alt="Vite logo" />
         </div>
+        
         <div>
           <h1>Get started</h1>
+          <h2>{greeting}</h2>
+          <h3>Your IP Address: {ipAddress}</h3>
           <p>
             Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
           </p>
